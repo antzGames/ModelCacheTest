@@ -8,4 +8,9 @@ public class ModelCacheTest extends Game {
     public void create() {
         setScreen(new FirstScreen());
     }
+
+    @Override
+    public void dispose() {
+        getScreen().dispose();
+    }
 }
