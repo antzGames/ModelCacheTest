@@ -163,6 +163,12 @@ public class FirstScreen implements Screen {
 
     @Override
     public void dispose() {
-        // Destroy screen's assets here.
+        sceneManager.dispose();
+        diffuseCubemap.dispose();
+        specularCubemap.dispose();
+        brdfLUT.dispose();
+        skybox.dispose();
+        modelCacheScene.dispose();
+        Gdx.app.log("DISPOSE","Screen disposed");
     }
 }
