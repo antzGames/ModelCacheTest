@@ -59,7 +59,7 @@ public class FirstScreen implements Screen {
         camera = new PerspectiveCamera(67f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.near = 0.001f;
         camera.far = 200;
-        camera.position.set(0,40f,0);
+        camera.position.set(0,20f,40);
         camera.lookAt(0,0,0);
         camera.update();
         sceneManager.setCamera(camera);
