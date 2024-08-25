@@ -28,7 +28,7 @@ What is it in the libGDX classes that is causing a 3-4x slowdown in both GWT and
 
 Note: Godot uses Emscripten to make web builds, and produces WASM (WebAssembly) code that performs on par as C++ code.
 
-If you are going to target the web, please do not use libGDX.
+If you are going to target the web, please do not use libGDX to make games.
 
 See: https://www.youtube.com/playlist?list=PLQxIUTu_M7Z_5rwPRWBOjEzACH-f2_yX6
 
