@@ -1,10 +1,10 @@
 # ModelCacheTest
 
-Press P to cycle between ModelCacheTest and PrimeNumber Test.
+Press P to cycle between Model Cache Test and Prime Number Test.
 
 ## Model Cache Test results:
 
-Desktop: 1.0x (used a baseline)
+Desktop: 1.0x (used as a baseline)
 
 GWT: 23.7x slower than desktop
 
@@ -12,17 +12,17 @@ teaVM: 8.8x slower than desktop
 
 ## Prime Number Test results:
 
-Desktop: 1.0x (used a baseline)
+Desktop: 1.0x (used as a baseline)
 
 GWT: 6.78x slower than desktop
 
-teaVM:  1.24x slower than desktop
+teaVM: 1.24x slower than desktop
 
 # Conclusions
 
 GWT (the official libGDX web backend) generates JS code that performs extremely poorly.
 
-gdx-teavm performs very well with java only code (no libGDX classes), but using libGDX classes it also performs poorly.
+gdx-teavm performs very well with java only code (no libGDX classes), but using libGDX classes it performs poorly.
 
 What is it in the libGDX classes that is causing a 3-4x slowdown in both GWT and gdx-teavm? 
 
