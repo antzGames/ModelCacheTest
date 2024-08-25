@@ -28,7 +28,7 @@ GWT (the official libGDX web backend) generates JS code that performs extremely 
 
 gdx-teavm performs very well with java only code (no libGDX classes), but using libGDX classes it performs poorly.
 
-What is it in the libGDX classes that is causing a 3-4x slowdown in both GWT and gdx-teavm? 
+What is it in the libGDX classes that is causing a 3-5x slowdown in both GWT and gdx-teavm? 
 
 Note: Godot uses Emscripten to make web builds, and produces WASM (WebAssembly) code that performs on par with compiled C++ code.
 
