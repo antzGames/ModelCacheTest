@@ -4,6 +4,8 @@ Press P to cycle between Model Cache Test and Prime Number Test.
 
 ## Model Cache Test results:
 
+See video: https://youtu.be/6qUZIZu6-AI
+
 Desktop: 1.0x (used as a baseline)
 
 GWT: 23.7x slower than desktop
@@ -11,6 +13,8 @@ GWT: 23.7x slower than desktop
 teaVM: 8.8x slower than desktop
 
 ## Prime Number Test results:
+
+See video: https://youtu.be/vMdqeVIcF6I
 
 Desktop: 1.0x (used as a baseline)
 
