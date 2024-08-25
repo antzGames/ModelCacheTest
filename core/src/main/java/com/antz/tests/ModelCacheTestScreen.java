@@ -4,11 +4,14 @@ import static net.mgsx.gltf.scene3d.attributes.PBRCubemapAttribute.*;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Cubemap;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.ModelCache;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
@@ -26,7 +29,7 @@ import net.mgsx.gltf.scene3d.scene.SceneSkybox;
 import net.mgsx.gltf.scene3d.utils.IBLBuilder;
 
 /** First screen of the application. Displayed after the application is created. */
-public class FirstScreen implements Screen {
+public class ModelCacheTestScreen implements Screen {
 
     public static final int HOW_MANY_MODELS = 100;          // how many models to build in the model cache
     public static float SCENE_REFRESH_INTERVAL = 2f;        // how often to build in seconds
@@ -45,12 +48,15 @@ public class FirstScreen implements Screen {
     public SceneSkybox skybox;
     public PerspectiveCamera camera;
     public ModelCache modelCacheScene = new ModelCache();
+    private BitmapFont bitmapFont = new BitmapFont();
+    private SpriteBatch spriteBatch = new SpriteBatch();
+    private float iteration, time, totalTime, average;
 
     @Override
     public void show() {
+        bitmapFont.getData().scale(1f);
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         initGLTF();
-        // Prepare your screen here.
     }
 
     private void initGLTF() {
@@ -118,6 +124,9 @@ public class FirstScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.SKY, true);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)){
+            ModelCacheTest.game.setScreen(new PrimeNumberScreen());
+        }
 
         sceneRefreshTimer += delta;
         if (sceneRefreshTimer > SCENE_REFRESH_INTERVAL) {
@@ -131,13 +140,23 @@ public class FirstScreen implements Screen {
             }
             modelCacheScene.end();
 
+            iteration++;
+            time = TimeUtils.timeSinceMillis(startTime);
+            totalTime += time;
+            average = totalTime/iteration;
+
             sceneManager.getRenderableProviders().clear();
             sceneManager.getRenderableProviders().add(modelCacheScene);
-            Gdx.app.log("MODEL CACHE","App Type: " + Gdx.app.getType() +  " took: " + TimeUtils.timeSinceMillis(startTime) + "ms to build " + HOW_MANY_MODELS + " tiles!");
+            Gdx.app.log("MODEL CACHE","App Type: " + Gdx.app.getType() +  " took: " + time + "ms to build " + HOW_MANY_MODELS + " tiles!");
         }
-
         sceneManager.update(delta);
         sceneManager.render();
+
+        //display
+        spriteBatch.begin();
+        bitmapFont.draw(spriteBatch, "libGDX - App Type: " + Gdx.app.getType() + "  Last time: " + time + "ms.  Average time: " + average + "ms", 10, 30);
+        spriteBatch.end();
+
     }
 
     @Override

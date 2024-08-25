@@ -4,9 +4,11 @@ import com.badlogic.gdx.Game;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class ModelCacheTest extends Game {
+    public static Game game;
     @Override
     public void create() {
-        setScreen(new FirstScreen());
+        game = this;
+        setScreen(new ModelCacheTestScreen());
     }
 
     @Override
